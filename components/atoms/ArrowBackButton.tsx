@@ -2,7 +2,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { Icon, IconButton } from "native-base";
 
-export const ArrowBack = () => {
+export const ArrowBackButton = () => {
   const navigation = useNavigation();
   return (
     <IconButton

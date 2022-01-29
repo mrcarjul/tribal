@@ -1,9 +1,9 @@
 import * as React from "react";
 import { fireEvent, render, RenderAPI } from "@testing-library/react-native";
-import { ArrowBack as ImportedArrowBack } from "..";
+import { ArrowBackButton as ImportedArrowBackButton } from "..";
 import { withThemeProvider } from "../../../lib";
 
-const ArrowBack = withThemeProvider(ImportedArrowBack);
+const ArrowBackButton = withThemeProvider(ImportedArrowBackButton);
 
 const mockedGoBack = jest.fn();
 
@@ -21,10 +21,10 @@ describe("Title", () => {
   let component: RenderAPI;
 
   beforeEach(() => {
-    component = render(<ArrowBack />);
+    component = render(<ArrowBackButton />);
   });
 
-  it("renders ArrowBack without error", async () => {
+  it("renders ArrowBackButton without error", async () => {
     const { queryByTestId } = component;
     expect(queryByTestId("arrow-back-button")).toBeTruthy();
   });

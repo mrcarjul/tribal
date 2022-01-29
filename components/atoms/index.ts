@@ -1,2 +1,2 @@
-export * from "./ArrowBack";
+export * from "./ArrowBackButton";
 export * from "./Title";
