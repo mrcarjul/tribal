@@ -11,7 +11,10 @@
     "test": "jest --watchAll"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "setupFilesAfterEnv": [
+      "<rootDir>/__mocks__/@react-navigation/native/index.ts"
+    ]
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.0",
