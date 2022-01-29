@@ -6,6 +6,7 @@ export const ArrowBack = () => {
   const navigation = useNavigation();
   return (
     <IconButton
+      testID="arrow-back-button"
       onPress={() => {
         navigation.goBack();
       }}
