@@ -5,7 +5,7 @@ import { withThemeProvider } from "../../../lib";
 
 const EditButton = withThemeProvider(ImportedEditButton);
 
-describe("Title", () => {
+describe("EditButton", () => {
   let component: RenderAPI;
   const mockedFunction = jest.fn();
 
