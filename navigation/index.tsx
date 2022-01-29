@@ -1,7 +1,12 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { View } from "react-native";
+import {
+  BusinessScreen,
+  BusinessesScreen,
+  PersonScreen,
+  PersonsScreen,
+} from "../components";
 import { RootStackParamList } from "../types";
 
 export default function Navigation() {
@@ -14,16 +19,17 @@ export default function Navigation() {
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const EmptyStack = () => <View />;
-
 function RootNavigator() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Root"
-        component={EmptyStack}
-        options={{ headerShown: false }}
-      />
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="Businesses" component={BusinessesScreen} />
+      <Stack.Screen name="Business" component={BusinessScreen} />
+      <Stack.Screen name="Persons" component={PersonsScreen} />
+      <Stack.Screen name="Person" component={PersonScreen} />
     </Stack.Navigator>
   );
 }
