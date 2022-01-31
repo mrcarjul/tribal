@@ -1,8 +1,18 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
-import { View } from "react-native";
+import { Box } from "native-base";
+import { AddBusinessFormContainer, Header } from "../molecules";
 import { RootStackParamList } from "../../types";
 
 export const BusinessScreen = ({
-  navigation,
-}: NativeStackScreenProps<RootStackParamList, "Business">) => <View />;
+  route,
+}: NativeStackScreenProps<RootStackParamList, "Business">) => {
+  const businessId = route.params?.businessId;
+
+  return (
+    <Box flex={1}>
+      <Header allowBack title="Add Business" />
+      <AddBusinessFormContainer businessId={businessId} />
+    </Box>
+  );
+};
