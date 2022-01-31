@@ -29,9 +29,16 @@ export const AddBusinessFormContainer = ({ businessId, name }: Business) => {
     onError,
   });
 
-  const onSubmit = useCallback((values: FormikValues) => {
-    addBusinessMutation(values.name);
-  }, []);
+  const onSubmit = useCallback(
+    (values: FormikValues) => {
+      if (businessId) {
+        // TODO add update(PUT) mutation
+        return;
+      }
+      addBusinessMutation(values.name);
+    },
+    [businessId]
+  );
 
   const onDelete = useCallback(() => {
     // TODO
