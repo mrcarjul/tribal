@@ -1,7 +1,8 @@
 import React from "react";
-import { Button, View, VStack } from "native-base";
+import { Button, Icon, Text, View, VStack } from "native-base";
 import { Formik, FormikValues } from "formik";
 import * as Yup from "yup";
+import { FontAwesome } from "@expo/vector-icons";
 
 type FormProps = {
   Form: React.ElementType;
@@ -25,7 +26,7 @@ export const FormContainer = ({
   validationSchema,
 }: FormProps) => {
   return (
-    <View paddingX={30} width="100%" testID="login-form-container">
+    <View paddingX={30} testID="login-form-container">
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -33,31 +34,40 @@ export const FormContainer = ({
       >
         {({
           errors,
-          handleChange,
           handleBlur,
+          handleChange,
           handleSubmit,
           touched,
           values,
         }) => (
-          <VStack space={3} mt="5" width="100%">
-            <Form {...{ values, touched, errors, handleChange, handleBlur }} />
+          <VStack space={3} mt={3}>
+            <Form {...{ errors, handleBlur, handleChange, touched, values }} />
             <Button
-              mt="2"
-              backgroundColor="primary.900"
+              colorScheme="error"
+              isDisabled={!isEdition}
               isLoading={loading}
+              leftIcon={<Icon as={FontAwesome} name="trash" size="sm" />}
+              mt="2"
               onPress={onDelete}
               testID="form-delete-button"
             >
-              Delete {submitButtonLabel}
+              {`Delete ${submitButtonLabel}`}
             </Button>
             <Button
-              mt="2"
-              backgroundColor="primary.900"
+              colorScheme="primary"
+              isDisabled={
+                (isEdition &&
+                  JSON.stringify(initialValues) === JSON.stringify(values)) ||
+                Object.keys(errors).length !== 0
+              }
               isLoading={loading}
+              isLoadingText="Submitting"
+              leftIcon={<Icon as={FontAwesome} name="plus" size="sm" />}
+              mt="2"
               onPress={handleSubmit as (values: FormikValues) => void}
               testID="form-submit-button"
             >
-              {isEdition ? "Update" : "Create"} {submitButtonLabel}
+              {`${isEdition ? "Update" : "Create"} ${submitButtonLabel}`}
             </Button>
           </VStack>
         )}
