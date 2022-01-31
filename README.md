@@ -1,4 +1,4 @@
-# tribal
+# Business management
 
 # Installation
 
