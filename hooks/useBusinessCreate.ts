@@ -24,7 +24,8 @@ export const useBusinessCreate = ({
           const businessId = response.headers["x-amzn-requestid"];
           if (typeof businessId === "string") {
             queryClient.setQueryData(["business"], (currentBusinessesData) => {
-              const { businesses } = currentBusinessesData as Businesses;
+              const { businesses } =
+                (currentBusinessesData as Businesses) || {}; // could be undefined
               const newBusiness = {
                 businessId,
                 name,
