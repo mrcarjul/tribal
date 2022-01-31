@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useCallback } from "react";
-import { Box, FlatList, Spinner } from "native-base";
+import { Box, FlatList, Spinner, Text } from "native-base";
 import { useQuery } from "react-query";
 import { Businesses, RootStackParamList } from "../../types";
 import { MemoBusinessItem, Header } from "../molecules";
@@ -26,7 +26,7 @@ export const BusinessesScreen = ({
         data={data?.businesses}
         renderItem={({ item }) => <MemoBusinessItem {...item} />}
         keyExtractor={(item) => item.businessId}
-        ListEmptyComponent={isFetching ? <Spinner /> : null}
+        ListEmptyComponent={isFetching ? <Spinner /> : <Text marginX={2}>No business yet. Add your first one!</Text>}
       />
       <AddButton onPress={onAddBusiness} />
     </Box>
