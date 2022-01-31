@@ -8,11 +8,12 @@ export const BusinessScreen = ({
   route,
 }: NativeStackScreenProps<RootStackParamList, "Business">) => {
   const businessId = route.params?.businessId;
+  const name = route.params?.name;
 
   return (
     <Box flex={1}>
       <Header allowBack title="Add Business" />
-      <AddBusinessFormContainer businessId={businessId} />
+      <AddBusinessFormContainer businessId={businessId} name={name} />
     </Box>
   );
 };
