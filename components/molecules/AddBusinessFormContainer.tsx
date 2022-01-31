@@ -1,41 +1,33 @@
 import React, { useCallback } from "react";
 import { Alert } from "react-native";
-import { useMutation } from "react-query";
 import { FormikValues } from "formik";
 import * as Yup from "yup";
-import { API, businessEndpoints } from "../../services";
 import { AddBusinessForm } from "../molecules/AddBusinessForm";
 import { FormContainer } from "../organisms";
-
-type AddBusinessFormContainerProps = {
-  businessId?: string;
-  name?: string;
-};
+import { useNavigation } from "@react-navigation/native";
+import { useBusinessCreate } from "../../hooks";
+import { Business } from "../../types";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Business is required"),
 });
 
-const addBusinessMutationOptions = {
-  onSuccess: () => {
-    Alert.alert("Business added");
-  },
-  onError: () => {
-    Alert.alert(
-      "Unkown error",
-      "I was not possible to create the business at this time please try again later"
-    );
-  },
+const onError = () => {
+  Alert.alert(
+    "Unkown error",
+    "I was not possible to create the business at this time. Please try again later."
+  );
 };
 
-export const AddBusinessFormContainer = ({
-  businessId,
-  name,
-}: AddBusinessFormContainerProps) => {
-  const { mutate: addBusinessMutation, isLoading } = useMutation(
-    (name: string) => businessEndpoints(API).addBusiness(name),
-    addBusinessMutationOptions
-  );
+export const AddBusinessFormContainer = ({ businessId, name }: Business) => {
+  const navigation = useNavigation();
+  const onSuccessEnd = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
+  const { mutate: addBusinessMutation, isLoading } = useBusinessCreate({
+    onSuccessEnd,
+    onError,
+  });
 
   const onSubmit = useCallback((values: FormikValues) => {
     addBusinessMutation(values.name);
