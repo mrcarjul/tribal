@@ -24,3 +24,7 @@ export type Business = {
   name: string;
   businessId: string;
 };
+
+export type Businesses = {
+  businesses: Business[];
+};
