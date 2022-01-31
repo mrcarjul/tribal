@@ -9,10 +9,7 @@ import { FormContainer } from "../organisms";
 
 type AddBusinessFormContainerProps = {
   businessId?: string;
-};
-
-const addFormInitialValues = {
-  name: "",
+  name?: string;
 };
 
 const validationSchema = Yup.object().shape({
@@ -33,6 +30,7 @@ const addBusinessMutationOptions = {
 
 export const AddBusinessFormContainer = ({
   businessId,
+  name,
 }: AddBusinessFormContainerProps) => {
   const { mutate: addBusinessMutation, isLoading } = useMutation(
     (name: string) => businessEndpoints(API).addBusiness(name),
@@ -50,7 +48,7 @@ export const AddBusinessFormContainer = ({
   return (
     <FormContainer
       Form={AddBusinessForm}
-      initialValues={addFormInitialValues}
+      initialValues={{ name: businessId ? name : "" }}
       isEdition={typeof businessId === "string"}
       loading={isLoading}
       onDelete={onDelete}
