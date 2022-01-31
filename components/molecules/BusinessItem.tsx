@@ -1,7 +1,7 @@
 import React, { memo, useCallback } from "react";
-import { MaterialIcons } from "@expo/vector-icons";
-import { Box, Icon, HStack, Text, Pressable } from "native-base";
+import { Box, HStack, Text, Pressable } from "native-base";
 import { useNavigation } from "@react-navigation/native";
+import { IconBusiness } from "../atoms/IconBusiness";
 import { Business } from "../../types";
 
 export const BusinessItem = ({ name, businessId }: Business) => {
@@ -36,12 +36,7 @@ export const BusinessItem = ({ name, businessId }: Business) => {
               alignItems="center"
               justifyContent="space-between"
             >
-              <Icon
-                size="md"
-                as={MaterialIcons}
-                name="business"
-                color="black"
-              />
+              <IconBusiness />
               <Text
                 _dark={{
                   color: "warmGray.50",
