@@ -7,7 +7,7 @@ import { Business } from "../../types";
 export const BusinessItem = ({ name, businessId }: Business) => {
   const navigation = useNavigation();
   const onPressBusinessItem = useCallback(() => {
-    navigation.navigate("Business", { businessId });
+    navigation.navigate("Business", { businessId, name });
   }, [navigation]);
 
   return (
@@ -18,7 +18,7 @@ export const BusinessItem = ({ name, businessId }: Business) => {
             style={{
               transform: [
                 {
-                  scale: isPressed ? 0.8 : 1,
+                  scale: isPressed ? 0.95 : 1,
                 },
               ],
             }}
