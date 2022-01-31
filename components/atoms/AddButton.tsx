@@ -1,5 +1,5 @@
 import { FontAwesome } from "@expo/vector-icons";
-import { Icon, IconButton } from "native-base";
+import { Box, Icon, IconButton } from "native-base";
 
 type AddButtonProps = {
   onPress: () => void;
@@ -7,10 +7,24 @@ type AddButtonProps = {
 
 export const AddButton = ({ onPress }: AddButtonProps) => {
   return (
-    <IconButton
-      testID="add-button"
-      onPress={onPress}
-      icon={<Icon size="md" as={FontAwesome} name="plus" color="black" />}
-    />
+    <Box alignItems="center" justifyContent="center">
+      <IconButton
+        testID="add-button"
+        onPress={onPress}
+        icon={
+          <Icon
+            size="md"
+            as={FontAwesome}
+            name="plus"
+            color="black"
+            textAlign="center"
+            width="100%"
+          />
+        }
+        _pressed={{
+          bg: "primary.500",
+        }}
+      />
+    </Box>
   );
 };
