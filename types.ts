@@ -8,7 +8,7 @@ declare global {
 
 export type RootStackParamList = {
   Businesses: undefined;
-  Business: { businessId?: string } | undefined;
+  Business: { businessId?: string; name?: string } | undefined;
   Persons: undefined;
   Person: { personId?: string };
 };
