@@ -12,7 +12,7 @@ export const AddBusinessForm = ({
   handleBlur,
 }: FormikProps<AddBusinessFormValues>) => {
   return (
-    <VStack space={3} mt="5" width="100%">
+    <VStack space={3} mt={1}>
       <BasicInput
         placeholder="Business name"
         error={touched.name ? errors.name : undefined}
